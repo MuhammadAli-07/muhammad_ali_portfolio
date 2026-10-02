@@ -1,0 +1,1218 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Muhammad Ali — AI engineer with a design and UX background.">
+  <title>Muhammad Ali — AI Engineer &amp; Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      font-family: "DM Sans", sans-serif;
+      color: #f5f6f8;
+      background: #0b0d12;
+      font-synthesis: none;
+      scroll-behavior: smooth;
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --mint: #4acfac;
+      --muted: rgb(255 255 255/.57);
+      --line: rgb(255 255 255/.12);
+      --display: "Montserrat", sans-serif
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer
+    }
+
+    .wrap {
+      max-width: 1320px;
+      margin: auto;
+      padding-left: 32px;
+      padding-right: 32px
+    }
+
+    header {
+      height: 72px;
+      position: fixed;
+      z-index: 10;
+      inset: 0 0 auto;
+      background: rgb(11 13 18/.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: -.02em
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 32px;
+      font-size: 14px;
+      color: rgb(255 255 255/.6)
+    }
+
+    .navlinks a:hover,
+    footer a:hover {
+      color: white
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .18s
+    }
+
+    .button:hover {
+      transform: translateY(-2px)
+    }
+
+    .button svg {
+      width: 18px;
+      height: 18px
+    }
+
+    .primary,
+    .dark {
+      background: var(--mint);
+      color: #11141b
+    }
+
+    .primary:hover,
+    .dark:hover {
+      background: #36c7d0
+    }
+
+    .secondary,
+    .outline {
+      border: 1px solid rgb(255 255 255/.35)
+    }
+
+    .secondary:hover {
+      border-color: #7e8ce0;
+      background: rgb(255 255 255/.08)
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 132px 0 82px;
+      min-height: min(940px, 100vh)
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .7;
+      pointer-events: none;
+      background-image: linear-gradient(rgb(255 255 255/.035) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255/.035) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to left, black, transparent 82%)
+    }
+
+    .hero:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #0b0d12 0%, rgb(11 13 18/.94) 37%, transparent 67%);
+      pointer-events: none
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1
+    }
+
+    .sphere {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none
+    }
+
+    .hero-copy {
+      max-width: 760px
+    }
+
+    .eyebrow,
+    .label {
+      color: var(--mint);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px
+    }
+
+    .eyebrow:before {
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: var(--mint)
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0
+    }
+
+    h1 {
+      font: 300 clamp(43px, 5.1vw, 74px)/1.06 var(--display);
+      letter-spacing: -.04em;
+      margin-bottom: 24px;
+      max-width: 780px
+    }
+
+    .lead {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      margin-bottom: 28px
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 58px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px
+    }
+
+    .fact {
+      border: 1px solid rgb(255 255 255/.1);
+      border-radius: 16px;
+      background: rgb(255 255 255/.035);
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: start
+    }
+
+    .fact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center
+    }
+
+    .fact-icon svg {
+      width: 22px
+    }
+
+    .fact-icon.one {
+      background: rgb(74 207 172/.14);
+      color: var(--mint)
+    }
+
+    .fact-icon.two {
+      background: rgb(126 140 224/.15);
+      color: #7e8ce0
+    }
+
+    .fact-icon.three {
+      background: rgb(255 164 142/.14);
+      color: #ffa48e
+    }
+
+    .fact h2 {
+      font-size: 14px;
+      margin: 2px 0 8px
+    }
+
+    .fact p {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--muted);
+      margin: 0
+    }
+
+    section.content {
+      padding: 108px 0
+    }
+
+    .alt {
+      background: var(--panel);
+      border-block: 1px solid var(--line)
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap: 32px;
+      align-items: end
+    }
+
+    .section-heading h2 {
+      font: 300 clamp(34px, 3.8vw, 58px)/1.05 var(--display);
+      letter-spacing: -.035em;
+      margin: 20px 0 0;
+      max-width: 850px
+    }
+
+    .section-heading>p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 370px;
+      margin: 0
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      min-height: 440px;
+      margin-top: 52px;
+      border: 1px solid rgb(255 255 255/.12);
+      border-radius: 22px;
+      overflow: hidden;
+      background: #151515;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .28)
+    }
+
+    .emirel-art {
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(ellipse at 53% 47%, #4b4a47 0%, #252525 42%, #111 82%);
+      border: 2px solid rgba(74, 207, 172, .7);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), 0 0 0 4px rgba(74, 207, 172, .16), 0 24px 70px rgba(74, 207, 172, .18);
+      transition: transform .2s ease, box-shadow .2s ease
+    }
+
+    .emirel-art:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18), 0 0 0 5px rgba(74, 207, 172, .22), 0 30px 80px rgba(74, 207, 172, .22)
+    }
+
+    .emirel-art:before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border: 1px solid rgb(218 206 176/.25);
+      border-radius: 50%;
+      box-shadow: 0 0 0 28px rgb(218 206 176/.035), 0 0 0 56px rgb(218 206 176/.025)
+    }
+
+    .emirel-art img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .emirel-logo {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #e7e1d3;
+      font: 500 clamp(34px, 5vw, 64px)/1 var(--display);
+      letter-spacing: .28em;
+      text-indent: .28em
+    }
+
+    .emirel-logo small {
+      display: block;
+      font: 500 9px "DM Sans", sans-serif;
+      letter-spacing: .42em;
+      margin-top: 13px;
+      color: #c7bcaa
+    }
+
+    .bottle {
+      position: absolute;
+      z-index: 1;
+      top: 20%;
+      left: 50%;
+      width: 108px;
+      height: 196px;
+      transform: translateX(-50%);
+      border: 1px solid rgb(239 231 211/.8);
+      border-radius: 23px 23px 17px 17px;
+      background: linear-gradient(90deg, rgb(255 255 255/.18), rgb(255 255 255/.035) 30%, rgb(255 255 255/.13) 68%, rgb(255 255 255/.02));
+      box-shadow: 0 22px 65px #0008;
+      opacity: .65
+    }
+
+    .bottle:before {
+      content: "";
+      position: absolute;
+      left: 37px;
+      top: -32px;
+      width: 34px;
+      height: 34px;
+      border: 1px solid #d8d0c0;
+      background: linear-gradient(90deg, #a39781, #eee6d6, #847a68);
+      border-radius: 4px 4px 0 0
+    }
+
+    .bottle:after {
+      content: "EMIREL";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 76px;
+      padding: 10px 0;
+      text-align: center;
+      border-block: 1px solid rgb(231 225 211/.5);
+      font: 500 9px "DM Sans", sans-serif;
+      letter-spacing: .22em;
+      color: #e7e1d3
+    }
+
+    .feature-copy {
+      padding: clamp(28px, 5vw, 62px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .feature-copy h3 {
+      font: 300 clamp(34px, 4vw, 52px)/1.05 var(--display);
+      letter-spacing: -.04em;
+      margin: 15px 0
+    }
+
+    .feature-copy>p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 0
+    }
+
+    .feature-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      margin-top: 26px
+    }
+
+    .feature-facts strong {
+      display: block;
+      font: 300 25px var(--display);
+      color: #e5d4ad
+    }
+
+    .feature-facts span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.4
+    }
+
+    .feature-copy .button {
+      align-self: flex-start;
+      margin-top: 26px
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 28px;
+      margin-top: 54px
+    }
+
+    .project-link {
+      display: block
+    }
+
+    .project-link:hover h3 {
+      color: var(--mint)
+    }
+
+    .visual {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      background: var(--tone, #292b30);
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      transition: transform .35s
+    }
+
+    .visual:before,
+    .visual:after {
+      content: "";
+      position: absolute;
+      pointer-events: none
+    }
+
+    .visual:before {
+      inset: 0;
+      background: linear-gradient(145deg, transparent 15%, rgb(0 0 0/.35)), radial-gradient(ellipse at 70% 20%, rgb(255 255 255/.18), transparent 42%)
+    }
+
+    .visual:after {
+      width: 150px;
+      height: 150px;
+      border: 1px solid rgb(255 255 255/.23);
+      border-radius: 50%;
+      box-shadow: 0 0 0 25px rgb(255 255 255/.035), 0 0 0 50px rgb(255 255 255/.025)
+    }
+
+    .visual:after {
+      display: none
+    }
+
+    .visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s
+    }
+
+    .project-link:hover .visual {
+      transform: translateY(-4px)
+    }
+
+    .project-link:hover .visual img {
+      transform: scale(1.035)
+    }
+
+    .art-word {
+      position: relative;
+      z-index: 1;
+      padding: 22px;
+      text-align: center;
+      font: 400 clamp(20px, 2.4vw, 34px)/1.1 var(--display);
+      letter-spacing: .08em;
+      text-shadow: 0 2px 25px #0008
+    }
+
+    .art-word small {
+      display: block;
+      font: 600 9px "DM Sans", sans-serif;
+      letter-spacing: .24em;
+      margin-top: 12px;
+      opacity: .75
+    }
+
+    .type {
+      position: absolute;
+      z-index: 2;
+      bottom: 12px;
+      left: 12px;
+      border: 1px solid rgb(255 255 255/.15);
+      border-radius: 99px;
+      background: rgb(11 13 18/.78);
+      padding: 6px 12px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase
+    }
+
+    .project .label {
+      margin: 22px 0 10px;
+      font-size: 10px
+    }
+
+    .project h3 {
+      font: 300 24px var(--display);
+      letter-spacing: -.03em;
+      margin: 0 0 10px;
+      transition: color .2s
+    }
+
+    .project p:last-child {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0
+    }
+
+    .center {
+      text-align: center;
+      margin-top: 52px
+    }
+
+    .outline {
+      background: none;
+      color: white
+    }
+
+    .outline:hover {
+      background: var(--mint);
+      border-color: var(--mint);
+      color: #11141b
+    }
+
+    .outline svg {
+      transition: transform .25s
+    }
+
+    .outline.open svg {
+      transform: rotate(180deg)
+    }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-block: 1px solid rgb(255 255 255/.2);
+      margin-top: 60px
+    }
+
+    .journey article {
+      padding: 34px 28px;
+      border-right: 1px solid rgb(255 255 255/.15)
+    }
+
+    .journey article:first-child {
+      padding-left: 0
+    }
+
+    .journey article:last-child {
+      border: 0
+    }
+
+    .number {
+      font-size: 12px;
+      color: var(--mint)
+    }
+
+    .journey .label {
+      margin: 34px 0 12px;
+      font-size: 10px
+    }
+
+    .journey h3 {
+      font: 300 23px var(--display);
+      margin: 0
+    }
+
+    .journey p:last-child {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 16px 0 0
+    }
+
+    .cap-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 90px
+    }
+
+    .cap-grid h2 {
+      font: 300 46px/1.16 var(--display);
+      letter-spacing: -.04em;
+      margin: 18px 0
+    }
+
+    .skill-list {
+      border-top: 1px solid rgb(255 255 255/.2)
+    }
+
+    .skill {
+      display: grid;
+      grid-template-columns: 34px 1fr 1.3fr;
+      gap: 12px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgb(255 255 255/.2)
+    }
+
+    .skill span {
+      font-size: 11px;
+      color: var(--mint)
+    }
+
+    .skill h3 {
+      font-size: 16px;
+      margin: 0
+    }
+
+    .skill p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0
+    }
+
+    .contact {
+      border-top: 1px solid rgb(255 255 255/.15);
+      padding-top: 44px
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 36px;
+      align-items: end;
+      margin-top: 22px
+    }
+
+    .contact h2 {
+      font: 300 clamp(46px, 6.5vw, 92px)/1.02 var(--display);
+      letter-spacing: -.045em;
+      margin: 0
+    }
+
+    .contact-copy p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 24px
+    }
+
+    .contact-copy .button {
+      text-transform: none
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 25px 0;
+      font-size: 11px;
+      color: rgb(255 255 255/.45)
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between
+    }
+
+    .chat-toggle {
+      position: fixed;
+      z-index: 20;
+      right: 20px;
+      bottom: 20px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--mint);
+      color: #11141b;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 12px 35px #0005
+    }
+
+    .chat-toggle:hover {
+      background: #36c7d0
+    }
+
+    .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #11141b;
+      margin-right: 12px
+    }
+
+    .chat {
+      position: fixed;
+      z-index: 20;
+      right: 20px;
+      bottom: 82px;
+      width: min(380px, calc(100% - 32px));
+      height: min(520px, 70vh);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--bg);
+      box-shadow: 0 24px 70px #0008;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden
+    }
+
+    .chat[hidden] {
+      display: none
+    }
+
+    .chat-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .chat-head strong {
+      font-size: 14px
+    }
+
+    .chat-head p {
+      font-size: 11px;
+      color: var(--muted);
+      margin: 4px 0 0
+    }
+
+    .messages {
+      flex: 1;
+      overflow: auto;
+      background: var(--panel);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .message {
+      max-width: 88%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.5
+    }
+
+    .message.bot {
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--muted)
+    }
+
+    .message.user {
+      margin-left: auto;
+      background: #7e8ce0;
+      color: white
+    }
+
+    .chat-form {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid var(--line)
+    }
+
+    .chat-form input {
+      min-width: 0;
+      flex: 1;
+      border: 1px solid rgb(255 255 255/.2);
+      border-radius: 99px;
+      background: var(--panel);
+      padding: 10px 14px;
+      color: white;
+      outline: none
+    }
+
+    .chat-form input:focus {
+      border-color: var(--mint)
+    }
+
+    .chat-form button {
+      border: 0;
+      border-radius: 50%;
+      width: 40px;
+      background: var(--mint);
+      color: #11141b
+    }
+
+    @media(max-width:800px) {
+      .wrap {
+        padding-left: 24px;
+        padding-right: 24px
+      }
+
+      .hero {
+        padding-top: 120px
+      }
+
+      .facts {
+        grid-template-columns: 1fr
+      }
+
+      .fact {
+        grid-template-columns: 44px 1fr
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px
+      }
+
+      .feature {
+        grid-template-columns: 1fr
+      }
+
+      .emirel-art {
+        min-height: 360px
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr
+      }
+
+      .section-heading>p {
+        max-width: 600px
+      }
+
+      .cap-grid {
+        grid-template-columns: 1fr;
+        gap: 30px
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr
+      }
+
+      .journey article {
+        padding: 28px 18px
+      }
+
+      .hero:after {
+        background: linear-gradient(90deg, #0b0d12 0%, rgb(11 13 18/.92) 55%, transparent)
+      }
+    }
+
+    @media(max-width:560px) {
+      .wrap {
+        padding-left: 19px;
+        padding-right: 19px
+      }
+
+      .navlinks {
+        display: none
+      }
+
+      .hero {
+        padding-top: 112px;
+        padding-bottom: 58px;
+        min-height: 0
+      }
+
+      .lead {
+        font-size: 16px
+      }
+
+      .facts {
+        margin-top: 42px
+      }
+
+      .content {
+        padding: 76px 0 !important
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 36px
+      }
+
+      .journey {
+        grid-template-columns: 1fr
+      }
+
+      .journey article,
+      .journey article:first-child {
+        padding: 26px 0;
+        border-right: 0;
+        border-bottom: 1px solid rgb(255 255 255/.15)
+      }
+
+      .journey article:last-child {
+        border: 0
+      }
+
+      .journey .label {
+        margin-top: 22px
+      }
+
+      .cap-grid h2 {
+        font-size: 36px
+      }
+
+      .skill {
+        grid-template-columns: 28px 1fr
+      }
+
+      .skill p {
+        grid-column: 2
+      }
+
+      .contact h2 {
+        font-size: 48px
+      }
+
+      .foot {
+        gap: 12px;
+        flex-wrap: wrap
+      }
+
+      .section-heading h2 {
+        font-size: 37px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      :root {
+        scroll-behavior: auto
+      }
+
+      *,
+      *:before,
+      *:after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="wrap"><a class="brand" href="#top">Muhammad Ali</a>
+      <div class="navlinks"><a href="#work">Work</a><a href="#journey">Journey</a><a href="#skills">Capabilities</a>
+      </div><a class="button dark" href="#contact">Get in touch <svg viewBox="0 0 20 20" fill="none">
+          <path d="M4 10h12m-4.5-4.5L16 10l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg></a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid"></div><canvas class="sphere" aria-hidden="true"></canvas>
+      <div class="wrap hero-content">
+        <div class="hero-copy">
+          <div class="eyebrow">AI engineer · UX background</div>
+          <h1>AI Engineer with Designing &amp; UX Background</h1>
+          <p class="lead">Engineering machine learning pipelines, LLM architectures, and intelligent web systems—backed
+            by end-to-end design and commercial execution.</p>
+          <div class="buttons"><a class="button primary" href="#work">View Projects <span>→</span></a><a
+              class="button secondary" href="#contact">Work Together <span>→</span></a></div>
+        </div>
+        <div class="facts">
+          <article class="fact"><span class="fact-icon one"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.4">
+                <path d="M10 18s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10Z" />
+                <circle cx="10" cy="8" r="2" />
+              </svg></span>
+            <div>
+              <h2>Based in Oslo</h2>
+              <p>Living in Norway and building an international perspective on technology, business, and design.</p>
+            </div>
+          </article>
+          <article class="fact"><span class="fact-icon two"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.4">
+                <path d="m2 7 8-4 8 4-8 4-8-4ZM5 9.5V14c3 2 7 2 10 0V9.5M18 7v6" />
+              </svg></span>
+            <div>
+              <h2>Master's in Applied AI</h2>
+              <p>Pursuing advanced study in Applied Artificial Intelligence with a practical engineering focus.</p>
+            </div>
+          </article>
+          <article class="fact"><span class="fact-icon three"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.4">
+                <rect x="2" y="5" width="16" height="12" rx="2" />
+                <path d="M7 5V3h6v2M2 10h16M8 10v2h4v-2" />
+              </svg></span>
+            <div>
+              <h2>Commercial experience</h2>
+              <p>Bringing end-to-end UX, brand, website, campaign, and execution experience to technical work.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="content alt" id="work">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="label">Selected work</p>
+            <h2>Brand worlds, campaigns, and digital experiences.</h2>
+          </div>
+          <p>A selection of graphic design, brand identity, packaging, and campaign work from my Behance portfolio.</p>
+        </div>
+        <article class="feature" id="emirel"><a class="emirel-art"
+            href="https://www.behance.net/gallery/239634201/EMIREL-Branding" target="_blank" rel="noreferrer"
+            aria-label="View EMIREL branding project on Behance"><img src="assets/behance/emirel.webp"
+              alt="EMIREL perfume brand artwork from the Behance project"></a>
+          <div class="feature-copy">
+            <p class="label">Complete brand launch · Featured case study</p>
+            <h3>EMIREL</h3>
+            <p>Built end-to-end, from scratch to a running perfume business. The launch brought together brand identity,
+              11 fragrances, a live e-commerce store, SEO, and marketing campaigns—connecting the visual system to a
+              real customer experience.</p>
+            <div class="feature-facts">
+              <div><strong>11</strong><span>fragrances</span></div>
+              <div><strong>End-to-end</strong><span>brand to business</span></div>
+              <div><strong>Live</strong><span>e-commerce store</span></div>
+            </div><a class="button primary" href="https://www.behance.net/gallery/239634201/EMIREL-Branding"
+              target="_blank" rel="noreferrer">Explore EMIREL on Behance <span>↗</span></a>
+          </div>
+        </article>
+        <div class="cards" id="project-list"></div>
+        <div class="center"><button class="button outline" id="projects-toggle" aria-expanded="false">View all projects
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></button></div>
+      </div>
+    </section>
+    <section class="content" id="journey">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="label">Professional journey</p>
+            <h2>Engineering intelligent systems. With a designer background.</h2>
+          </div>
+          <p>My focus is now AI engineering, supported by a professional foundation in UX, visual communication, and
+            commercial delivery.</p>
+        </div>
+        <div class="journey">
+          <article><span class="number">01</span>
+            <p class="label">Current focus</p>
+            <h3>Applied AI engineering</h3>
+            <p>Building knowledge in machine learning pipelines, AI agents, RAG systems, LLM architecture, and model
+              fine-tuning.</p>
+          </article>
+          <article><span class="number">02</span>
+            <p class="label">Academic direction</p>
+            <h3>Master's in Applied AI</h3>
+            <p>Studying Applied Artificial Intelligence in Oslo and translating technical learning into practical
+              intelligent systems.</p>
+          </article>
+          <article><span class="number">03</span>
+            <p class="label">Designer background</p>
+            <h3>UX &amp; commercial design</h3>
+            <p>Bringing established experience in branding, campaigns, UI/UX, websites, motion, packaging, and
+              production.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="content alt" id="skills">
+      <div class="wrap cap-grid">
+        <div>
+          <p class="label">Capabilities</p>
+          <h2>AI engineering capabilities, strengthened by a designer's perspective.</h2>
+        </div>
+        <div class="skill-list">
+          <div class="skill"><span>01</span>
+            <h3>AI agent engineering</h3>
+            <p>Human-centered agents, orchestration and workflow automation</p>
+          </div>
+          <div class="skill"><span>02</span>
+            <h3>RAG &amp; LLM systems</h3>
+            <p>Retrieval pipelines, LLM architecture and grounded experiences</p>
+          </div>
+          <div class="skill"><span>03</span>
+            <h3>Python &amp; machine learning</h3>
+            <p>Data workflows, model experimentation and ML pipelines</p>
+          </div>
+          <div class="skill"><span>04</span>
+            <h3>UX &amp; digital systems</h3>
+            <p>Research, Figma, interfaces, websites and WordPress</p>
+          </div>
+          <div class="skill"><span>05</span>
+            <h3>Brand communication</h3>
+            <p>Identity, campaigns, motion, packaging and production</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content" id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <p class="label">Contact</p>
+          <div class="contact-grid">
+            <h2>Let's discuss the work—and what comes next.</h2>
+            <div class="contact-copy">
+              <p>Available for AI engineering roles, thoughtful collaborations, and projects that value clarity and
+                craft.</p><a class="button dark" href="mailto:hello@yourname.design">Lets Work Togather
+                <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap foot"><span>© 2025 Muhammad Ali</span><a href="#top">Back to top</a></div>
+  </footer>
+  <button class="chat-toggle" id="chat-toggle" aria-expanded="false"><span class="dot"></span>Ask about me</button>
+  <aside class="chat" id="chat" aria-label="Portfolio assistant" hidden>
+    <div class="chat-head"><strong>Portfolio assistant</strong>
+      <p>Ask about experience, skills, or projects</p>
+    </div>
+    <div class="messages" id="messages" aria-live="polite">
+      <div class="message bot">Hello. I can answer questions about my work, experience, and current AI learning journey.
+      </div>
+    </div>
+    <form class="chat-form" id="chat-form"><input id="question" aria-label="Ask a question"
+        placeholder="Type your question..."><button type="submit" aria-label="Send question">→</button></form>
+  </aside>
+  <script>
+    const projects = [
+      { title: "AdvantaPure: Dynamic Digital Ad Campaigns", category: "Campaign · Digital advertising", type: "Campaign", image: "assets/behance/advantapure.webp", url: "https://www.behance.net/gallery/254558169/AdvantaPure-Dynamic-Digital-Ad-Campaigns" },
+      { title: "Braids Salon logo design", category: "Identity · Logo design", type: "Brand identity", image: "assets/behance/braids-salon.webp", url: "https://www.behance.net/gallery/214812687/Braids-Salon-logo-design" },
+      { title: "Eye catching and clean designs for Ice cream company", category: "Packaging · Food & beverage", type: "Packaging", image: "assets/behance/ice-cream.webp", url: "https://www.behance.net/gallery/208951425/Eye-catching-and-clean-designs-for-Ice-cream-company" },
+      { title: "Logo Designs portfolio", category: "Identity · Selected logos", type: "Logo design", image: "assets/behance/logo-designs.webp", url: "https://www.behance.net/gallery/209242799/Logo-Designs-portfolio" },
+      { title: "Packaging Designs for Bob's Brand", category: "Packaging · Brand design", type: "Packaging", image: "assets/behance/bobs-packaging.webp", url: "https://www.behance.net/gallery/164887953/Packaging-Designs-for-Bobs-Brand" },
+      { title: "Plant Based Snacks Branding and Packaging designs", category: "Branding · Packaging", type: "Branding", image: "assets/behance/plant-based-snacks.webp", url: "https://www.behance.net/gallery/193209987/Plant-Based-Snacks-Branding-and-Packaging-designs" },
+      { title: "iCare Pharmacy Project", category: "Healthcare · Brand design", type: "Brand experience", image: "assets/behance/icare-pharmacy.webp", url: "https://www.behance.net/gallery/193134805/iCare-Pharmacy-Project" },
+      { title: "Fast Food Branding Designs", category: "Food · Brand identity", type: "Branding", image: "assets/behance/fast-food.webp", url: "https://www.behance.net/gallery/190398673/Fast-Food-Branding-Designs" },
+      { title: "Vegan leather Shoes Ad Designs", category: "Fashion · Campaign", type: "Advertising", image: "assets/behance/vegan-shoes.webp", url: "https://www.behance.net/gallery/164888261/Vegan-leather-Shoes-Ad-Designs" },
+      { title: "CRYSTALYA Brand Designs", category: "Identity · Visual system", type: "Brand identity", image: "assets/behance/crystalya.webp", url: "https://www.behance.net/gallery/191888481/CRYSTALYA-Brand-Designs" },
+      { title: "Camouflage Shoes Professional Poster Design", category: "Poster · Footwear", type: "Poster design", image: "assets/behance/camouflage-shoes.webp", url: "https://www.behance.net/gallery/162433093/Camouflage-Shoes-Professional-Poster-Design" }
+    ];
+    const list = document.querySelector('#project-list'), toggle = document.querySelector('#projects-toggle'); let showAll = false;
+    function renderProjects() { list.innerHTML = projects.slice(0, showAll ? projects.length : 6).map((p, i) => `<a class="project-link" href="${p.url}" target="_blank" rel="noreferrer" aria-label="View ${p.title} on Behance"><article class="project"><div class="visual"><img src="${p.image}" alt="${p.title} project thumbnail" loading="lazy"><span class="type">${p.type}</span></div><p class="label">${String(i + 1).padStart(2, '0')} · ${p.category}</p><h3>${p.title}</h3></article></a>`).join(''); toggle.innerHTML = `${showAll ? 'Show selected projects' : 'View all projects'} <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`; toggle.setAttribute('aria-expanded', String(showAll)); toggle.classList.toggle('open', showAll) }
+    renderProjects(); toggle.addEventListener('click', () => { showAll = !showAll; renderProjects() });
+    const canvas = document.querySelector('.sphere'), ctx = canvas.getContext('2d'), points = Array.from({ length: 850 }, (_, i) => { const y = 1 - i / 849 * 2, r = Math.sqrt(1 - y * y), a = Math.PI * (3 - Math.sqrt(5)) * i; return { x: Math.cos(a) * r, y, z: Math.sin(a) * r } }); let pointer = { x: -1000, y: -1000 }, width = 0, height = 0, frame;
+    function resize() { const b = canvas.getBoundingClientRect(), ratio = Math.min(devicePixelRatio || 1, 2); width = b.width; height = b.height; canvas.width = width * ratio; canvas.height = height * ratio; ctx.setTransform(ratio, 0, 0, ratio, 0, 0) }
+    function draw(t) { ctx.clearRect(0, 0, width, height); const radius = Math.min(width * .23, height * .29, 270), cx = width * .77, cy = Math.min(height * .4, 380), rot = matchMedia('(prefers-reduced-motion: reduce)').matches ? .35 : t * .00012, tilt = -.2, cr = Math.cos(rot), sr = Math.sin(rot), ct = Math.cos(tilt), st = Math.sin(tilt); for (const p of points) { const x = p.x * cr - p.z * sr, z = p.x * sr + p.z * cr, y = p.y * ct - z * st, d = p.y * st + z * ct, pers = 1.7 / (2.25 - d); let sx = cx + x * radius * pers, sy = cy + y * radius * pers; const dx = sx - pointer.x, dy = sy - pointer.y, dist = Math.hypot(dx, dy), influence = Math.max(0, 1 - dist / 145); if (dist > 0) { sx += dx / dist * influence * 22; sy += dy / dist * influence * 22 } ctx.beginPath(); ctx.fillStyle = `rgb(54 199 208 / ${.18 + (d + 1) / 2 * .72})`; ctx.arc(sx, sy, .55 + (d + 1) / 2 * 1.5, 0, Math.PI * 2); ctx.fill() } if (!matchMedia('(prefers-reduced-motion: reduce)').matches) frame = requestAnimationFrame(draw) }
+    resize(); addEventListener('resize', resize); addEventListener('pointermove', e => { const b = canvas.getBoundingClientRect(); pointer = { x: e.clientX - b.left, y: e.clientY - b.top } }); draw(0);
+    function answer(q) { const t = q.toLowerCase(); if (/emirel|perfume|fragrance/.test(t)) return "EMIREL is my perfume brand, built end-to-end from scratch into a running business: 11 fragrances, a live e-commerce store, SEO, and marketing campaigns. See the featured case study in the Work section."; if (/skill|do you do|capabilit/.test(t)) return "My work spans brand identity, graphic design, packaging, advertising campaigns, and digital commerce, alongside AI engineering and UX."; if (/ai|python|rag|llm|hugging/.test(t)) return "I am currently developing practical skills in applied AI: agent design, Python, RAG systems, LLM engineering and fine-tuning with Hugging Face. I bring a designer's focus on clarity and human needs to this work."; if (/experience|background|journey/.test(t)) return "My journey combines visual communication and commercial design with current study in Applied AI. I connect design thinking, brand building, and emerging intelligent systems."; if (/project|work|portfolio/.test(t)) return "Featured work includes EMIREL, my perfume business built from scratch through brand identity, 11 fragrances, e-commerce, SEO, and campaigns. The gallery also links to selected identity, packaging, advertising, and poster projects on Behance."; if (/contact|hire|available|email/.test(t)) return "I would be glad to discuss a role, collaboration or project. You can reach me at hello@yourname.design using the contact section below."; if (/education|study|learn/.test(t)) return "My foundation is in design and visual communication, supported by continuous professional learning. I am currently focused on applied AI agent design and Python."; return "I can answer questions about my experience, skills, projects, EMIREL, AI learning journey, or how to get in touch. What would you like to know?" }
+    const chat = document.querySelector('#chat'), chatToggle = document.querySelector('#chat-toggle'), messages = document.querySelector('#messages'); chatToggle.addEventListener('click', () => { chat.hidden = !chat.hidden; chatToggle.setAttribute('aria-expanded', String(!chat.hidden)); chatToggle.innerHTML = `<span class="dot"></span>${chat.hidden ? 'Ask about me' : 'Close'}` }); document.querySelector('#chat-form').addEventListener('submit', e => { e.preventDefault(); const input = document.querySelector('#question'), q = input.value.trim(); if (!q) return; for (const [kind, text] of [['user', q], ['bot', answer(q)]]) { const bubble = document.createElement('div'); bubble.className = `message ${kind}`; bubble.textContent = text; messages.append(bubble) } input.value = ''; messages.scrollTop = messages.scrollHeight });
+  </script>
+</body>
+
+</html>
